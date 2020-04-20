@@ -92,6 +92,14 @@ def remove_links(df):
     return df
 
 '''
+Makes a new column that holds the original tweet - used later for the sentiment
+'''
+def copy(df):
+    df["original"] = df["text"]
+    return df
+
+
+'''
 Takes a dataframe and drops all tweets that are duplicate entries.
 This is to reduce spam and advertisement in the sentiment. The dataframe
 is returned.
@@ -160,6 +168,7 @@ def drop_non_en(df):
 def main():
     df = read_file(TESTNAME)
     df = remove_mentions(df)
+    df = copy(df)
     df = make_lower(df)
     df = remove_sf_user(df)
     df = remove_sf_agents(df)
