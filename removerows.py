@@ -29,7 +29,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 #Put .csv file here
-TESTNAME = '05-2019.csv'
+TESTNAME = 'merge2019.csv'
 
 '''
 This function takes in a csv file and converts it into a Pandas
@@ -51,6 +51,12 @@ def remove_mentions(df):
     todf = df[~df['to'].isna()]
     df = pd.concat([df, todf]).drop_duplicates(keep=False)
     df =df.drop("to", axis = 1)
+    return df
+'''
+This function makes a copy of the original tweet for future referencing and makes a new column called orginal 
+'''
+def copy(df):
+    df["original"] = df["text"]
     return df
 
 '''
@@ -79,7 +85,7 @@ and would affect the sentiment as a whole. Returns the dataframe.
 '''
 def remove_sf_agents(df):
     employees = ["StateFarm", "SFAgent", "SF", "StFarm", "State_Farm", "statefarm", "MsCeeJay", "Agent", "agent", "PeaceMakerMN", "StLife_Ministry", "joshua042042", "dew_hayes", "SteveKreis23", "AWLwarsaw", "TeamBoychuck", "NormanSThomas", "SupHero2KidsOH", "mattdoughertysf", "InsWithDane", "sf", "insuredwithsam", "scrowl72", "SteveLittleInc", "KMADDIE72", "ThePridePages", "GumptownM", "chamber", "Chamber", "Josh_Hemphill_", "stfarm", "TylerPeschong", "acalvio", "ryguy_73", "TheBlock__", "BCIdentity", "WSNCT", "ANTDOGG422", "CHACHA555", "BurtchWorks", "BeefnSushi", "AmberInsuresMe", "SoldbySarahKemp", "EasternCareer", "PKWEnterprises", "FollowT34731484", "NHCOhelps", "newroads20", "BrandonHuffman9", "Phil_Mormann", "OntraMarketing", "LoveAlexissss_", "TurningPointDV", "GeorgeMentz", "cealiv", "Insurance", "insurance", "INC", "Inc"]
-    df = df[~df['text'].str.contains("|".join(employees))]
+    df = df[~df['username'].str.contains("|".join(employees))]
     return df
 
 '''
@@ -128,7 +134,7 @@ spam or advertising. The dataframe is returned.
 '''
 def remove_random(df):
     jake = ["jake", "jakes"]
-    terms = ["she shed", "five years in a row", "Five Years in a Row", "#1 in customer satisfaction", "reminder, if you", "watch the newest", "Happy New Year from", "congratulations to", "$10 donation", "donate $10", "blockchain", "cp3", "carrieunderwood"]
+    terms = ["five years in a row", "#1 in customer satisfaction", "reminder, if you", "watch the newest", "Happy New Year from", "congratulations to", "$10 donation", "donate $10", "blockchain", "cp3", "carrieunderwood"]
     df = df[~df['text'].str.contains("|".join(jake))]
     df = df[~df['text'].str.contains("|".join(terms))]
     return df
@@ -160,6 +166,7 @@ def drop_non_en(df):
 def main():
     df = read_file(TESTNAME)
     df = remove_mentions(df)
+    df = copy(df)
     df = make_lower(df)
     df = remove_sf_user(df)
     df = remove_sf_agents(df)
@@ -169,7 +176,7 @@ def main():
     df = remove_sport(df)
     df = remove_random(df)
     df = drop_non_en(df)
-    df.to_csv('removal'+TESTNAME, index = False, encoding='utf-8-sig')
+    df.to_csv('removerows2019.csv', index = False, encoding='utf-8-sig')
 
 if __name__ == '__main__':
     main()
