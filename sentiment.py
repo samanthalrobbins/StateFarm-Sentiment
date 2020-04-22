@@ -527,7 +527,7 @@ if __name__ == '__main__':
     
     df = read_file("mobile19.csv")
     text(df)
-    amp(df)
+
     
     df["score"] = df["text"].map(dic)
     df.to_csv("dfscore.csv", index = False, encoding='utf-8-sig')
