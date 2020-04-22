@@ -503,18 +503,14 @@ if __name__ == '__main__':
 
     def text(df):
         sen = []
-        for i in df["original"]:
+        for i in df["text"]:
             sen.append(i)
         return sen
 
-    def amp(df):
-        df['original'] = df['original'].str.replace('&amp','and ')
-        df['original'] = df['original'].str.replace('amp','and ')
-        return df
+
 
     def sent():
         df = read_file("mobile19.csv")
-        df = amp(df)
         sent = text(df)
         return sent
 
@@ -533,7 +529,7 @@ if __name__ == '__main__':
     text(df)
     amp(df)
     
-    df["score"] = df["original"].map(dic)
+    df["score"] = df["text"].map(dic)
     df.to_csv("dfscore.csv", index = False, encoding='utf-8-sig')
 
 
