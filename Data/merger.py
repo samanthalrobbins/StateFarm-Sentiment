@@ -17,7 +17,7 @@ def main():
         
         df = pd.concat([df, dfadd], axis=0)
     
-    df.to_csv(r'2019.csv', index = False)
+    df.to_csv(r'data_full.csv', index = False)
     
     #print(df)
 
