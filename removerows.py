@@ -29,7 +29,7 @@ pd.set_option('display.max_columns', 500)
 pd.set_option('display.width', 1000)
 
 #Put .csv file here
-TESTNAME = 'merge2019.csv'
+TESTNAME = 'data_full.csv'
 
 '''
 This function takes in a csv file and converts it into a Pandas
@@ -134,7 +134,7 @@ spam or advertising. The dataframe is returned.
 '''
 def remove_random(df):
     jake = ["jake", "jakes"]
-    terms = ["five years in a row", "#1 in customer satisfaction", "reminder, if you", "watch the newest", "Happy New Year from", "congratulations to", "$10 donation", "donate $10", "blockchain", "cp3", "carrieunderwood"]
+    terms = ["five years in a row", "#1 in customer satisfaction", "reminder, if you", "watch the newest", "happy new year from", "congratulations to", "$10 donation", "donate $10", "blockchain", "cp3"]
     df = df[~df['text'].str.contains("|".join(jake))]
     df = df[~df['text'].str.contains("|".join(terms))]
     return df
@@ -176,7 +176,7 @@ def main():
     df = remove_sport(df)
     df = remove_random(df)
     df = drop_non_en(df)
-    df.to_csv('removerows2019.csv', index = False, encoding='utf-8-sig')
+    df.to_csv('base_data.csv', index = False, encoding='utf-8-sig')
 
 if __name__ == '__main__':
     main()
