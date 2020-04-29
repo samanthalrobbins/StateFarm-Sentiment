@@ -53,12 +53,14 @@ def amp(df):
     df['text'] = df['text'].str.replace('amp','and ')
     return df
 
+
 def main():
-    df = read_file('mobile19.csv')
+    df = read_file('base_data.csv')
     df = amp(df)
+
     df = transcheck(df)
     
-    df.to_csv("clean_mobile19.csv", index = False, encoding='utf-8-sig')
+    df.to_csv("cleaned_data.csv", index = False, encoding='utf-8-sig')
     
 if __name__ == '__main__':
     main()
