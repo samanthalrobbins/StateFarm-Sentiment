@@ -20,8 +20,8 @@ def nd_df(df):
     
     '''
     --These lists are commented out for future use. (referencing purposes only)
-    tropicalstorm= ["landslide", "imelda","tropical storm","storm michael", "severe storms", "severe storm", "flooding", "flood"]    
-    hurricane = ["hurricane", "dorian","barry","fernand" ]
+    tropicalstorm= ["landslide", "fernand", "imelda","tropical storm","storm michael", "severe storms", "severe storm", "flooding", "flood"]    
+    hurricane = ["hurricane", "dorian","barry"]
     earthquake =["earthquake"]
     tornado = ["tornado"]
     fire = ["fire"]
