@@ -19,6 +19,7 @@ def nd_df(df):
     nd_key = ["landslide", "imelda","tropical storm","storm michael", "severe storms", "severe storm", "flooding", "flood","hurricane", "dorian","barry","fernand","earthquake","tornado","fire","damage", "disaster"]
     
     '''
+    --These lists are commented out for future use. (referencing purposes only)
     tropicalstorm= ["landslide", "imelda","tropical storm","storm michael", "severe storms", "severe storm", "flooding", "flood"]    
     hurricane = ["hurricane", "dorian","barry","fernand" ]
     earthquake =["earthquake"]
