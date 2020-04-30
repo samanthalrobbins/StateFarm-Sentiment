@@ -51,13 +51,13 @@ def combine(df, labeldf):
     
 
 def main():
-    df = read_file('dfscore.csv')
+    df = read_file('mobile_sentiment.csv')
     split(df)
     cdf = compdf(df)
     #print(df)
     dfl = label(cdf)
     fdl=combine(df, dfl)
-    fdl.to_csv(r'mobile191-.csv', index = False)
+    fdl.to_csv(r'mobile_compound.csv', index = False)
 
 if __name__ == '__main__':
     main()

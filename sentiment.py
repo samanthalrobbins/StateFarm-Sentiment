@@ -510,7 +510,7 @@ if __name__ == '__main__':
 
 
     def sent():
-        df = read_file("mobile19.csv")
+        df = read_file("mobile.csv")
         sent = text(df)
         return sent
 
@@ -525,12 +525,12 @@ if __name__ == '__main__':
         #print("{:-<65} {}".format(sentence, str(vs)))
     #print(dic)
     
-    df = read_file("mobile19.csv")
+    df = read_file("mobile.csv")
     text(df)
 
     
     df["score"] = df["text"].map(dic)
-    df.to_csv("dfscore.csv", index = False, encoding='utf-8-sig')
+    df.to_csv("mobile_sentiment.csv", index = False, encoding='utf-8-sig')
 
 
 
