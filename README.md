@@ -8,3 +8,7 @@ As well as unwanted data, such as User_ID, links, and tweets not in English.
 It runs the data_full.csv which is all the mined Twitter data for 2019. 
 
 File base_data.csv is the new removed dataset. 
+
+Note: This module requies langdetect to filter out tweets that are not in English. 
+
+  '$ pip install langdetect'
